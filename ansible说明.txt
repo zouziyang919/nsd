@@ -1,0 +1,61 @@
+什么是ansible?
+批量修改服务器密码
+批量安装软件包
+批量修改配置
+工作原理：并发
+基于SSH协议，模块丰富
+支持异构IT架构
+==================
+模块（py脚本）
+管理端-------------ssh-----被管理端
+（海量脚本：2800+）
+1 ansiblie ssh 远程被管理端主机
+2 拷贝模块到被管理端主机
+3 在被管理端主机执行脚本
+4 执行完后。删除脚本，断开连接。
+=====================
+vim test.sh
+#!/bin/bash
+ useradd tom
+----
+vim tesh.sh
+#!/bin/bash
+read -p "用户名：" name
+useradd $1
+
+test.sh tom
+================
+ssh-keygen    -f      /root/.ssh/id_rsa       -N  ''
+
+                 指定默认路径                       密码设置为空
+
+for  i  in node1  node2 node3 node4 node5
+do 
+ssh-copy-id  $i
+done
+==============
+/etc/ansible/ansible.cfg
+对所有人
+
+/root/ansible.cfg 对root有效
+/tom/ansible.cfg  对tom有效
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
